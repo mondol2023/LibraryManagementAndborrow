@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.log
+
+# Django
+*.sqlite3
+*.db
+*.pot
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+
+# Migrations (optional, keep if sharing DB structure with team)
+*/migrations/*.py
+*/migrations/*.pyc
+!*/migrations/__init__.py
+
+# Virtualenv
+env/
+venv/
+ENV/
+VENV/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Testing
+coverage.xml
+htmlcov/
+.pytest_cache/
+.tox/
+
+# MyPy, Pylint
+.mypy_cache/
+.pylint.d/
