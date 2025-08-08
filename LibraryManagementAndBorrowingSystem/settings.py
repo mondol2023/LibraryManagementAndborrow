@@ -37,14 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'Book',
-    'Borrow',
-    'User',
+    'api',
+    'book',
+    'users',
     'rest_framework',
-    'rest_framework_simplejwt',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -58,6 +55,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'LibraryManagementAndBorrowingSystem.urls'
+
+AUTH_USER_MODEL = 'users.User'
+
 
 TEMPLATES = [
     {
@@ -81,10 +81,22 @@ WSGI_APPLICATION = 'LibraryManagementAndBorrowingSystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'library_management_system',
+        'USER': 'postgres',
+        'PASSWORD': ' ',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -108,6 +120,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -129,9 +148,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
