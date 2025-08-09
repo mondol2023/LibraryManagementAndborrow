@@ -1,32 +1,38 @@
-﻿## Library Management And Borrow
+﻿# Library Management And Borrow
 
-# APIs ---------------------
+## --- APIs ---------------------
 
 # -- USERS -
-- User Register - /api/register/
-- User Login - /api/login/
-- User penalty - /api/users/<id>/penalties/
+- User Register (POST) - /api/register/
+- User Login (POST) - /api/login/
+ 
 
-# --BOOKS -
+# -- BOOKS -
 - Books CRUD - 
-- /api/books/
-- /api/books/<id>/
+- (POST, GET) - /api/books/.
+- (GET, PUT, DELETE) - /api/books/{id}/
 
-# --AUTHORS -
-- Authors create and list - 
+# -- AUTHORS -
+- Authors create and list (POST, GET) - 
 - /api/authors/
 
-# --CATEGORIES -
-- Categories create and list - 
+# -- CATEGORIES -
+- Categories create and list (POST, GET) - 
 - /api/categories/
 
-# --BORROW -
+# -- BORROW -
 - Borrow books (POST) - /api/borrow/
 - Borrow data list (GET) - /api/borrow/
-- Borrow verify - /api/borrow-verify/<borrow_id>/ - [out of requirements, this is an extra api for admin verification]
-- Return books - /api/return/
+- Borrow verify (PUT)- /api/borrow-verify/{borrow_id}/ - [out of requirements, this is an extra api for admin verification]
+- Return books (POST) - /api/return/
+
+# -- USER PENALTIES -
+- User penalties (GET) - /api/users/{id}/penalties/
+
+## --- Permissions have been set as per requirements in views -------
 
 
+## --- Descriptions ---------------------
 
 These are the step-by-step process when a user requests to borrow a book:
 
