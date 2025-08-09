@@ -4,14 +4,16 @@ from .models import Author, Category, Book, Borrow
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ("name", "bio", "created_by", "updated_by", "created_at", "updated_at")
+    list_display = ("name", "bio", "is_active", "created_at", "updated_at")
     search_fields = ("name",)
+    list_filter = ("is_active",)
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "created_by", "updated_by", "created_at", "updated_at")
+    list_display = ("name", "is_active", "created_at", "updated_at")
     search_fields = ("name", "bio")
+    list_filter = ("is_active",)
 
 
 @admin.register(Book)
@@ -19,11 +21,10 @@ class BookAdmin(admin.ModelAdmin):
     list_display = (
         "title", "author", "category",
         "total_copies", "available_copies",
-        "created_by", "updated_by",
-        "created_at", "updated_at"
+        "is_active", "created_at", "updated_at"
     )
     search_fields = ("title", "description", "author__name", "category__name")
-    list_filter = ("category", "author")
+    list_filter = ("category", "author", "is_active")
 
 
 @admin.register(Borrow)

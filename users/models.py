@@ -1,30 +1,33 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 from django.utils import timezone
 from datetime import timedelta
 
 
 class User(AbstractUser):
     # User Type Choices
-    USER_TYPE_STUDENT = "student"
-    USER_TYPE_TEACHER = "teacher"
-    USER_TYPE_STAFF = "staff"
-    USER_TYPE_OTHER = "other"
+    ROLE_ADMIN = "admin"
+    ROLE_STUDENT = "student"
+    ROLE_TEACHER = "teacher"
+    ROLE_STAFF = "staff"
+    ROLE_OTHER = "other"
 
-    USER_TYPE_CHOICES = [
-        (USER_TYPE_STUDENT, "Student"),
-        (USER_TYPE_TEACHER, "Teacher"),
-        (USER_TYPE_STAFF, "Staff"),
-        (USER_TYPE_OTHER, "Other"),
+    ROLE_CHOICES = [
+        (ROLE_ADMIN, "Admin"),
+        (ROLE_STUDENT, "Student"),
+        (ROLE_TEACHER, "Teacher"),
+        (ROLE_STAFF, "Staff"),
+        (ROLE_OTHER, "Other"),
     ]
+
+    phone_number = models.CharField(max_length=14, blank=True, null=True)
+    reference_number = models.CharField(max_length=255, blank=True, null=True)
     penalty_points = models.IntegerField(default=0)
-    user_type = models.CharField(
+    role = models.CharField(
         max_length=20,
-        choices=USER_TYPE_CHOICES,
+        choices=ROLE_CHOICES,
         blank=True, null=True
     )
 
     def __str__(self):
-        return self.username + ' - ' + self.user_type if self.user_type else self.username
-    
+        return self.username + (' - ' + self.role if self.role else '')
